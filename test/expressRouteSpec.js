@@ -97,6 +97,7 @@ describe("Testing routes that return JSON", function(err){
         });
 
   });
+});
   describe.only("Testing calculator POST route", function(err){
  it("should handle and send the computed info", function(done){
    url
@@ -110,5 +111,43 @@ describe("Testing routes that return JSON", function(err){
        });
 
  });
+});
+describe.only("Testing  POST route", function(err){
+it("should be null", function(done){
+ url
+     .post("/adding")
+     .send({id:null,name:null})
+     .expect(200)
+     .end(function(err,res){
+       should.not.exist(err);
+      res.text.should.equal("Enter some value");
+       done();
+     });
+});
+});
+describe.only("Testing 2", function(err){
+it("should have some value", function(done){
+  url
+      .post("/adding")
+      .send({id:"",name:""})
+      .expect(200)
+      .end(function(err,res){
+        should.not.exist(err);
+        res.text.should.equal("Enter valid input");
+        done();
+      });
+});
+});
+describe.only("Testing 3  ", function(err){
+it("should have", function(done){
+  url
+      .post("/adding")
+      .send({id:"25",name:"sri"})
+      .expect(200)
+      .end(function(err,res){
+        should.not.exist(err);
+        res.text.should.equal("done");
+        done();
+      });
 });
 });
